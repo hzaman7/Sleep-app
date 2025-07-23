@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#121212"
+        app:title="Smart Alarm"
+        android:layout_alignParentTop="true"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Switch
+        android:id="@+id/smart_alarm_switch"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/enable_smart_mode"
+        android:textColor="@android:color/white"
+        android:thumbTint="@android:color/white"
+        android:trackTint="@color/accent_purple"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Label input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/label_input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="@string/alarm_label_hint"
+        android:background="@drawable/rounded_edittext"
+        app:boxStrokeColor="@color/teal_200"
+        android:layout_below="@+id/smart_alarm_switch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/alarm_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textColorHint="#BBBBBB"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Hours adjustment controls -->
+    <LinearLayout
+        android:id="@+id/hours_adjustment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_input_layout"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Minus button -->
+        <ImageButton
+            android:id="@+id/btn_minus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_remove"
+            android:contentDescription="@string/decrease_hours"
+            app:tint="@android:color/white"/>
+
+        <!-- Hours display -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hours"
+                android:textSize="14sp"
+                android:textColor="#BBBBBB"/>
+        </LinearLayout>
+
+        <!-- Plus button -->
+        <ImageButton
+            android:id="@+id/btn_plus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_add"
+            android:contentDescription="@string/increase_hours"
+            app:tint="@android:color/white"/>
+    </LinearLayout>
+
+    <!-- Sleep reduction controls (minus section) -->
+    <LinearLayout
+        android:id="@+id/sleep_reduction_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hours_adjustment_layout"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Minus button -->
+        <ImageButton
+            android:id="@+id/btn_reduce_minus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_remove"
+            android:contentDescription="@string/decrease_reduction"
+            app:tint="@android:color/white"/>
+
+        <!-- Reduction display -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_reduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/minutes_reduction"
+                android:textSize="14sp"
+                android:textColor="#BBBBBB"/>
+        </LinearLayout>
+
+        <!-- Plus button -->
+        <ImageButton
+            android:id="@+id/btn_reduce_plus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_add"
+            android:contentDescription="@string/increase_reduction"
+            app:tint="@android:color/white"/>
+    </LinearLayout>
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/save_alarm"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/bottom_nav"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/accent_purple"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:layout_marginBottom="30dp"
+        android:textColor="@android:color/white"
+       />
+
+    <!-- Cancel Button -->
+    <Button
+        android:id="@+id/cancel_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="#444444"
+        android:text="@string/cancel"
+        android:visibility="gone"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:layout_above="@+id/save_alarm"
+       />
+
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#111111"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:maxWidth="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            android:src="@drawable/home"
+            app:tint="@color/text_white"
+            android:contentDescription="@string/alarm"/>
+
+        <ImageView
+            android:id="@+id/nav_alarm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_alarm"
+            app:tint="@color/accent_purple"
+            android:contentDescription="@string/alarm"/>
+
+        <ImageView
+            android:id="@+id/nav_sounds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_sounds"
+            app:tint="@color/text_white"
+            android:contentDescription="@string/sounds"/>
+
+        <ImageView
+            android:id="@+id/nav_sleepHistory"
+            android:layout_width="0dp"
+            android:maxWidth="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            android:src="@drawable/history"
+            app:tint="@color/text_white"
+            android:contentDescription="@string/home"/>
+
+        <ImageView
+            android:id="@+id/nav_report"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_report"
+            app:tint="@color/text_white"
+            android:contentDescription="@string/report"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
